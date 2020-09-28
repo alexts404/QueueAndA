@@ -12,19 +12,19 @@ app.use((ctx) => {
 io.on('connection', (socket) => {
   console.log('user connected');
   socket.on('disconnect', () => {
-    console.log(`user ${socket.userName} disconnected`);
-    removeUser(socket.userName);
+    console.log(`user ${socket.id} disconnected`);
+    removeUser(socket.id);
   });
 
   socket.on('add user', (userName, reject) => {
-    const name = addUser(userName);
-    if (name) {
-      socket.userName = name;
-    } else {
+    const name = addUser(userName, socket.id);
+    if (!name) {
       handleError(
         reject,
         `User ${userName} already exists.\nChoose a different username!`,
       );
+    } else {
+      socket.userName = name;
     }
   });
 
