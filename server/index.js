@@ -3,7 +3,15 @@ const app = new Koa();
 const server = require('http').createServer(app.callback());
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 3000;
-const { enqueue, dequeue, addUser, removeUser, getQueue } = require('./model');
+const {
+  enqueue,
+  dequeue,
+  addUser,
+  removeUser,
+  getQueue,
+  addToSession,
+  addSession,
+} = require('./model');
 
 app.use((ctx) => {
   ctx.body = `socket.io server\nConnect with Queue&A app`;
@@ -14,10 +22,12 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log(`user ${socket.id} disconnected`);
     removeUser(socket.id);
+    io.emit('broadcast queue', getQueue());
   });
 
   socket.on('add user', (userName, reject) => {
     const name = addUser(userName, socket.id);
+    console.log('add user request');
     if (!name) {
       handleError(
         reject,
@@ -27,34 +37,50 @@ io.on('connection', (socket) => {
       socket.userName = name;
     }
   });
+  socket.on('add session', (session, reject) => {
+    if (addSession(session)) {
+      console.log('session', session, 'added');
+    } else {
+      handleError(reject);
+    }
+  });
+
+  socket.on('join session', (session, reject) => {
+    if (addToSession(socket.id, session)) {
+      socket.session = session;
+      socket.join(session);
+    } else {
+      handleError(reject);
+    }
+  });
 
   socket.on('raise hand', (reject) => {
-    if (enqueue(socket.userName, 'handQueue')) {
-      socket.emit('broadcast queue', getQueue());
+    if (enqueue(socket.id, socket.session, 'handQueue')) {
+      socket.emit('broadcast queue', getQueue(socket.session));
     } else {
       handleError(reject);
     }
   });
 
   socket.on('raise finger', (reject) => {
-    if (enqueue(socket.userName, 'fingerQueue')) {
-      io.emit('broadcast queue', getQueue());
+    if (enqueue(socket.id, socket.session, 'fingerQueue')) {
+      io.to(socket.session).emit('broadcast queue', getQueue(socket.session));
     } else {
       handleError(reject);
     }
   });
 
   socket.on('lower hand', (reject) => {
-    if (dequeue(socket.userName, 'handQueue')) {
-      io.emit('broadcast queue', getQueue());
+    if (dequeue(socket.id, socket.session, 'handQueue')) {
+      io.to(socket.session).emit('broadcast queue', getQueue(socket.session));
     } else {
       handleError(reject);
     }
   });
 
   socket.on('lower finger', (reject) => {
-    if (dequeue(socket.userName, 'fingerQueue')) {
-      io.emit('broadcast queue', getQueue());
+    if (dequeue(socket.id, socket.session, 'fingerQueue')) {
+      io.to(socket.session).emit('broadcast queue', getQueue(socket.session));
     } else {
       handleError(reject);
     }
