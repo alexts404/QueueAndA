@@ -11,6 +11,7 @@ const {
   getQueue,
   addToSession,
   addSession,
+  dequeueNext,
 } = require('./model');
 
 app.use((ctx) => {
@@ -27,7 +28,6 @@ io.on('connection', (socket) => {
 
   socket.on('add user', (userName, reject) => {
     const name = addUser(userName, socket.id);
-    console.log('add user request');
     if (!name) {
       handleError(
         reject,
@@ -39,7 +39,17 @@ io.on('connection', (socket) => {
   });
   socket.on('add session', (session, reject) => {
     if (addSession(session)) {
-      console.log('session', session, 'added');
+    } else {
+      handleError(reject);
+    }
+  });
+
+  socket.on('next question', (sessionId, reject) => {
+    const next = dequeueNext(sessionId);
+    if (next) {
+      console.log('firing once');
+      io.to(sessionId).emit('broadcast_next', next);
+      io.to(sessionId).emit('broadcast queue', getQueue(sessionId));
     } else {
       handleError(reject);
     }
@@ -49,6 +59,7 @@ io.on('connection', (socket) => {
     if (addToSession(socket.id, session)) {
       socket.session = session;
       socket.join(session);
+      socket.emit('broadcast queue', getQueue(session));
     } else {
       handleError(reject);
     }

@@ -11,7 +11,7 @@ const addSession = (sessionId) => {
       ...sessions,
     };
     sessions[sessionId] = {
-      users: [],
+      users: {},
       queue: {
         fingerQueue: [],
         handQueue: [],
@@ -25,8 +25,9 @@ const addSession = (sessionId) => {
 const addToSession = (socketId, sessionId) => {
   const userName = users[socketId];
   const session = sessions[sessionId];
-  if (userName && session && !session.users.includes(userName)) {
-    session.users = [...session.users, userName];
+  if (userName && session) {
+    session.users = { ...session.users };
+    session.users[userName] = true;
     console.log('user', userName, 'added to session', session);
     return true;
   } else return false;
@@ -63,6 +64,20 @@ const dequeue = (socketId, sessionId, queueName) => {
   } else return false;
 };
 
+const dequeueNext = (sessionId) => {
+  const queue = sessions[sessionId]?.queue;
+  if (!queue) return null;
+  let nextOneUp;
+  if (queue.fingerQueue.length > 0) {
+    nextOneUp = queue.fingerQueue[0];
+    queue.fingerQueue = queue.fingerQueue.filter((item) => item !== nextOneUp);
+  } else if (queue.handQueue.length > 0) {
+    nextOneUp = queue.handQueue[0];
+    queue.handQueue = queue.handQueue.filter((item) => item !== nextOneUp);
+  } else return null;
+  return nextOneUp;
+};
+
 const getQueue = (sessionId) => {
   return sessions[sessionId]?.queue;
 };
@@ -94,4 +109,5 @@ module.exports = {
   getQueue,
   addToSession,
   addSession,
+  dequeueNext,
 };
