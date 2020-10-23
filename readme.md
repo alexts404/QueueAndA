@@ -12,10 +12,20 @@ Always be the first in line.
 
 ## Getting started
 
-1. Clone the repo: <code>git clone https://github.com/atsteinberg/QueueAndA.git</code>
+1. Clone repo: <code>git clone https://github.com/atsteinberg/QueueAndA.git</code>
 2. Install dependencies: <code>npm i</code> (if you haven't installed node and npm, the node package manager, do that first: [install npm](https://www.npmjs.com/get-npm))
-3. run the server: <code>node server/index.js</code>
-4. run the app: <code>cd newClient && npm start</code>
+3. run server: <code>node server/index.js</code>
+4. run app: <code>cd newClient && npm start</code>
+
+## Tech Stack
+
+- [React native with Expo](https://expo.io/)
+
+- [Typescript](https://www.typescriptlang.org/)
+
+- [Socket.io](https://socket.io/)
+
+- [Koa](https://koajs.com/)
 
 ## Developer
 
