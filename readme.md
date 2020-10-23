@@ -1,6 +1,6 @@
 # Queue&A
 
-<img src="./newClient/assets/logoReadme.png" alt="logoBlue" />
+<img src="./newClient/assets/logoReadme.png" alt="logoBlue" style="zoom: 50%;" />
 
 Digital queuing app (iOS and Android) for Q&As.
 
