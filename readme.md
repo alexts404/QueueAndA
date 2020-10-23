@@ -31,4 +31,4 @@ Always be the first in line.
 
 ## Developer
 
-Alex Steinberg: [github](https://github.com/atsteinberg) – [linkedin]()
+- Alex Steinberg – tech lead: [github](https://github.com/atsteinberg) – [linkedin](https://www.linkedin.com/in/alexander-steinberg-7b7299194) – [web](atsteinberg.github.io)
