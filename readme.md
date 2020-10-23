@@ -1,6 +1,6 @@
 # Queue&A
 
-<img src="./newClient/assets/logoReadme.png" alt="logoBlue" />
+<img src="./newClient/assets/logoReadme.png" />
 
 Digital queuing app (iOS and Android) for Q&As.
 
@@ -8,7 +8,7 @@ Always be the first in line.
 
 ## Screenshots
 
-<img src="./newClient/assets/screenshots.png" alt="screenshots" style="zoom: 25%;" />
+<img src="./newClient/assets/screenshots.png" alt="screenshots" />
 
 ## Getting started
 
