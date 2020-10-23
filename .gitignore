@@ -4,3 +4,6 @@ solo-project-proposal
 server/node_modules
 socketTest
 test/panTest
+
+.env
+

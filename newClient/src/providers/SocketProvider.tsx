@@ -1,7 +1,9 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
+import dotenv from 'dotenv';
 import io from 'socket.io-client';
 import { UserContext } from './UserProvider';
-let SOCKETSERVER = 'http://10.197.2.159:3000';
+dotenv.config();
+let SOCKETSERVER = process.env.SOCKETSERVER || 'http://localhost:3000';
 
 export const SocketContext = createContext<{
   socket: null | SocketIOClient.Socket;
