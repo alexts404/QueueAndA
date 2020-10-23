@@ -17,7 +17,7 @@ Always be the first in line.
 3. run server: <code>node server/index.js</code>
 4. run app: <code>cd newClient && npm start</code>
 
-## Tech Stack
+## Built with
 
 - [React native with Expo](https://expo.io/)
 
@@ -26,6 +26,8 @@ Always be the first in line.
 - [Socket.io](https://socket.io/)
 
 - [Koa](https://koajs.com/)
+
+- [Blood, Sweat & Tears](https://bloodsweatandtears.com/)
 
 ## Developer
 
