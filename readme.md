@@ -33,4 +33,4 @@ Automatically manage Q&A sessions with hand (new question) and finger (follow up
 
 ## Developer
 
-- Alex Steinberg: [github](https://github.com/atsteinberg) – [linkedin](https://www.linkedin.com/in/alexander-steinberg-7b7299194) – [web](https://atsteinberg.github.io)
+- Alex Steinberg: [github](https://github.com/atsteinberg) – [linkedin](www.linkedin.com/in/atsteinberg) – [web](https://atsteinberg.github.io)
