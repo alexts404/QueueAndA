@@ -21,7 +21,7 @@ Automatically manage Q&A sessions with hand (new question) and finger (follow up
 
 ## Built with
 
-- [React native with Expo](https://expo.io/)
+- [React native with Expo](https://reactnative.dev/)
 
 - [Typescript](https://www.typescriptlang.org/)
 
