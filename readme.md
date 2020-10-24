@@ -2,9 +2,11 @@
 
 <img src="./newClient/assets/logoReadme.png" alt="logoBlue" />
 
+Always be the first in line.
+
 Digital queuing app (iOS and Android) for Q&As.
 
-Always be the first in line.
+Automatically manage Q&A sessions with hand (new question) and finger (follow up question) priority support.
 
 ## Screenshots
 
@@ -31,4 +33,4 @@ Always be the first in line.
 
 ## Developer
 
-- Alex Steinberg: [github](https://github.com/atsteinberg) – [linkedin](https://www.linkedin.com/in/alexander-steinberg-7b7299194) – [web](atsteinberg.github.io)
+- Alex Steinberg: [github](https://github.com/atsteinberg) – [linkedin](https://www.linkedin.com/in/alexander-steinberg-7b7299194) – [web](https://atsteinberg.github.io)
