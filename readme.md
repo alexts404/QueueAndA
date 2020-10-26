@@ -1,6 +1,6 @@
 # Queue&A
 
-<img src="./newClient/assets/logoReadme.png" alt="logoBlue" />
+<img src="./readme-images/logo.png" alt="logoBlue" />
 
 Always be the first in line.
 
@@ -10,7 +10,7 @@ Automatically manage Q&A sessions with hand (new question) and finger (follow up
 
 ## Screenshots
 
-<img src="./newClient/assets/screenshots.png" alt="screenshots" />
+<img src="./readme-images/screenshots.png" alt="screenshots" />
 
 ## Getting started
 
